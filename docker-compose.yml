@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    command: python backend/main.py
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+
+  dashboard:
+    build: .
+    ports:
+      - "8501:8501"
+    command: streamlit run frontend/dashboard.py --server.port=8501 --server.address=0.0.0.0
+    environment:
+      - API_BASE=http://api:8000
+    depends_on:
+      - api
