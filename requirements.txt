@@ -6,8 +6,8 @@ numpy==1.26.2
 xgboost==2.0.3
 scikit-learn==1.4.0
 
-# Geospatial
-folium==0.15.0
+# Geospatial - FIXED: folium version bumped to avoid conflict
+folium==0.14.0
 streamlit-folium==0.18.0
 
 # Viz
