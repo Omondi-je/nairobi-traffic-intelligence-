@@ -42,7 +42,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # API Configuration
-API_BASE = "http://localhost:8000"
+API_BASE = "https://nairobi-traffic-api.onrender.com"
 
 # Sidebar
 st.sidebar.markdown("## 🚦 Navigation")
