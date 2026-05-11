@@ -87,20 +87,6 @@ A full-stack **traffic intelligence platform** that:
 
 **Key Insight**: Rain increases congestion by **10% on average**, with Thika Road and Mombasa Road most affected (+13–14%).
 
----
-
-## 🖼️ Dashboard Screenshots
-
-*(Add these to `/reports/screenshots/` and reference them)*
-
-| Feature | Preview |
-|---------|---------|
-| **Live Congestion Heatmap** | `reports/screenshots/heatmap.png` |
-| **24-Hour Forecast Chart** | `reports/screenshots/forecast.png` |
-| **Route Risk Panel** | `reports/screenshots/route_risk.png` |
-| **Streamlit UI Overview** | `reports/screenshots/dashboard.png` |
-
----
 
 ## 🚀 Quick Start
 
