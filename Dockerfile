@@ -8,21 +8,21 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements
+# Copy requirements first (for layer caching)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project files
 COPY . .
 
-# Expose ports (FastAPI: 8000, Streamlit: 8501)
+# Expose ports
 EXPOSE 8000 8501
 
-# Create startup script
-RUN echo '#!/bin/bash\n\
-python backend/main.py &\n\
-sleep 5\n\
-streamlit run frontend/dashboard.py --server.port=8501 --server.address=0.0.0.0\n\
-' > start.sh && chmod +x start.sh
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
 
-CMD ["./start.sh"]
+# Start both services with proper process management
+CMD bash -c "python backend/main.py & \
+    sleep 10 && \
+    streamlit run frontend/dashboard.py --server.port=8501 --server.address=0.0.0.0"
